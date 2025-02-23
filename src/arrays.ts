@@ -4,25 +4,47 @@
  * an empty array. If there is one element, the resulting list should
  * the number twice.
  */
+// new array, just first and last elements
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    let length: number = numbers.length;
+    if (length == 0) {
+        return [];
+    } else if (length == 1) {
+        return [...numbers, ...numbers];
+    }
+
+    let firstElem: number = numbers[0];
+    let lastElem: number = numbers[length-1];
+
+    let array: number[] = [firstElem, lastElem];
+    return array;
 }
+// COMPLETE
 
 /**
  * Consume an array of numbers, and return a new array where each
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    let tripled: number[] = numbers.map((n: number): number => n*3);
+    return tripled;
 }
+// COMPLETE
 
 /**
  * Consume an array of strings and convert them to integers. If
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    // strings into integers
+    // if not an integer, change it to 0
+    let ints: number[] = numbers.map(
+        (num: string): number => (parseInt(num)) ? (parseInt(num)) : 0
+    );
+
+    return ints;
 }
+// COMPLETE
 
 /**
  * Consume an array of strings and return them as numbers. Note that
@@ -31,6 +53,7 @@ export function stringsToIntegers(numbers: string[]): number[] {
  * convert it to 0 instead.
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
+// 
 export const removeDollars = (amounts: string[]): number[] => {
     return [];
 };
