@@ -60,10 +60,10 @@ export function stringsToIntegers(numbers: string[]): number[] {
 export const removeDollars = (amounts: string[]): number[] => {
     // removing dollar sign
     let noSign: number[] = amounts.map(
-        (word: string): number => (word[0] == "$") ? (parseInt(word[:1])): 0
+        (word: string): number => (word[0] == "$") ? (parseInt(word.slice(1))): 0
     );
     return noSign;
-};
+}
 // COMPLETE
 
 /**
@@ -74,27 +74,27 @@ export const removeDollars = (amounts: string[]): number[] => {
 export const shoutIfExclaiming = (messages: string[]): string[] => {
     // check for ! at the end of messages
     let exclam: string[] = messages.map(
-        (word: string): string => (word[word.length-1] == "!") ? (word.slice(1).toUpperCase())
+        (word: string): string => (word[word.length-1] == "!") ? (word.slice(1).toUpperCase)
     );
 
     let remove: string[] = exclam.filter(
         (word:string): boolean => word[word.length-1] == "?"
     );
     return remove;
-};
-// COMPLETE
+}
+// COMPLETE BUT WRONG
 
 /**
  * Consumes an array of words and returns the number of words that are LESS THAN
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    let counter: number = 0;
-
-    
-
+    let counter: number = words.reduce(
+        (word: string) => (word.length < 4) ? counter++
+    );
     return 0;
 }
+// COMPLETE BUT WRONG
 
 /**
  * Consumes an array of colors (e.g., 'red', 'purple') and returns true if ALL
@@ -102,6 +102,10 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
+    if (colors.length == 0) {
+        return true;
+    }
+    
     return false;
 }
 
