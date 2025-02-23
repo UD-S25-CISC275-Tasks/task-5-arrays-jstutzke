@@ -53,10 +53,18 @@ export function stringsToIntegers(numbers: string[]): number[] {
  * convert it to 0 instead.
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
-// 
+
+// if first element is $, remove it
+// if result can't be made an int, make it a 0
+
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    // removing dollar sign
+    let noSign: number[] = amounts.map(
+        (word: string): number => (word[0] == "$") ? (parseInt(word[:1])): 0
+    );
+    return noSign;
 };
+// COMPLETE
 
 /**
  * Consume an array of messages and return a new list of the messages. However, any
@@ -64,14 +72,26 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    // check for ! at the end of messages
+    let exclam: string[] = messages.map(
+        (word: string): string => (word[word.length-1] == "!") ? (word.slice(1).toUpperCase())
+    );
+
+    let remove: string[] = exclam.filter(
+        (word:string): boolean => word[word.length-1] == "?"
+    );
+    return remove;
 };
+// COMPLETE
 
 /**
  * Consumes an array of words and returns the number of words that are LESS THAN
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
+    let counter: number = 0;
+
+
     return 0;
 }
 
