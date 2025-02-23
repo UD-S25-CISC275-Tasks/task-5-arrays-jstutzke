@@ -91,6 +91,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
 export function countShortWords(words: string[]): number {
     let counter: number = 0;
 
+    
 
     return 0;
 }
