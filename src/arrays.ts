@@ -67,12 +67,6 @@ export const removeDollars = (amounts: string[]): number[] => {
         parseInt(num) ? parseInt(num) : 0,
     );
 
-    let plan: boolean = nums.every((num: number): boolean => num != 0);
-
-    if (!plan) {
-        return [0];
-    }
-
     return nums;
 };
 // COMPLETE
@@ -184,6 +178,8 @@ export function makeMath(addends: number[]): string {
  * For instance, the array [1, 9, -5, 7] would become [1, 9, -5, 10, 7]
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
+
+// after first negative number: insert sum of previous numbers in the list
 export function injectPositive(values: number[]): number[] {
     // search for a negative number and get the index of it
     // get the sum up to the negative number
@@ -193,11 +189,17 @@ export function injectPositive(values: number[]): number[] {
     let neg: number = values.findIndex((value: number): boolean => value < 0);
     let index: number = neg + 1;
 
-    let upToNeg: number[] = values.filter(
-        (value: number): boolean => value > 0,
-    );
+    // let upToNeg: number[] = values.filter(
+    //     (value: number): boolean => value > 0,
+    // );
 
-    let sum: number = upToNeg.reduce(
+    let array: number[] = values.slice(0, index - 1);
+
+    if (neg == -1) {
+        array = values;
+    }
+
+    let sum: number = array.reduce(
         (currentTotal: number, num: number) => currentTotal + num,
         0,
     );
