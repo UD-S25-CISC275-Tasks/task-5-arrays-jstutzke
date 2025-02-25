@@ -125,24 +125,26 @@ export function allRGB(colors: string[]): boolean {
     if (colors.length == 0) {
         return true;
     }
-
     // filter the colors array and take out any colors that aren't red blue or green
     // measure the length of the colors array
 
-    let noRed: string[] = colors.filter(
-        (color: string): boolean => color != "red",
+    let red: string[] = colors.filter(
+        (color: string): boolean => color == "red",
     );
-    let noBlue: string[] = noRed.filter(
-        (color: string): boolean => color != "blue",
+    let blue: string[] = colors.filter(
+        (color: string): boolean => color == "blue",
     );
-    let noGreen: string[] = noBlue.filter(
-        (color: string): boolean => color != "green",
+    let green: string[] = colors.filter(
+        (color: string): boolean => color == "green",
     );
 
-    if (colors.length == noGreen.length) {
+    let total: number = red.length + blue.length + green.length;
+
+    if (total == colors.length) {
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
 // COMPLETE!!!!!
 
