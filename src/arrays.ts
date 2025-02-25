@@ -59,10 +59,21 @@ export function stringsToIntegers(numbers: string[]): number[] {
 
 export const removeDollars = (amounts: string[]): number[] => {
     // removing dollar sign
-    let noSign: number[] = amounts.map((word: string): number =>
-        word[0] == "$" ? parseInt(word.slice(1)) : 0,
+    let noSign: string[] = amounts.map((word: string): string =>
+        word[0] == "$" ? word.slice(1) : word,
     );
-    return noSign;
+
+    let nums: number[] = noSign.map((num: string): number =>
+        parseInt(num) ? parseInt(num) : 0,
+    );
+
+    let plan: boolean = nums.every((num: number): boolean => num != 0);
+
+    if (!plan) {
+        return [0];
+    }
+
+    return nums;
 };
 // COMPLETE
 
